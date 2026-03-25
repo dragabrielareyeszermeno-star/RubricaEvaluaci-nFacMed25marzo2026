@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rúbrica Hemorragia Digestiva - R1 Urgencias</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=axEJuudcNF4uBUVVDAyel03_3eByXCs0e_u1t808cC25m_Pw8JUmPlC3t7JszrnMOOB9YBxeyaFyn2p8Z-MceAu3GIOIpcrEpGTv-D2lb57FZutOdK1g0HQk2m-44DD2kmSMJOVyZ2oLlMFlhwZtU1clQLWAnbVx0qrl1SD9p3kJabnxQ6F8uMvDi9j4h5kCHHEFV-b4iDBj4KQJgI1ULnGFPiEtpPM5x0ofjphRjWJI4B7t8y2-1mJ_vTAKllaDv-Q0nzkKfiEm3HpjUkSXCg" charset="UTF-8"></script><style>
+    :root {
+      --bg: #f4f7f7;
+      --card: #ffffff;
+      --text: #18312e;
+      --muted: #5b706c;
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #e7f5f2;
+      --border: #d4e4e0;
+      --warn: #b42318;
+      --shadow: 0 12px 32px rgba(16,24,40,.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(15,118,110,.08), transparent 22%),
+        linear-gradient(180deg, #f9fcfc 0%, var(--bg) 100%);
+    }
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(212,228,224,.85);
+    }
+    .header-inner {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      object-fit: contain;
+      padding: 4px;
+      flex: 0 0 auto;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      line-height: 1.05;
+    }
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button, .file-label {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    button:hover, .file-label:hover {
+      transform: translateY(-1px);
+      border-color: #91cfc4;
+      color: var(--primary-dark);
+      background: linear-gradient(180deg, #effaf7 0%, #ffffff 100%);
+    }
+    .primary {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      border-color: transparent;
+    }
+    .primary:hover {
+      color: #fff;
+      background: linear-gradient(180deg, #12857b 0%, #0f655f 100%);
+    }
+    .grid-top {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      margin: 18px 0;
+    }
+    .section {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      margin: 0 0 12px;
+      color: var(--primary-dark);
+      font-size: 1.18rem;
+    }
+    .intro {
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .stat {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #fff 0%, #f8fbfb 100%);
+    }
+    .stat .label {
+      display: block;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-bottom: 8px;
+    }
+    .stat .value {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0,1fr));
+      gap: 12px;
+    }
+    .field {
+      grid-column: span 4;
+    }
+    .field.wide {
+      grid-column: span 6;
+    }
+    .field.full {
+      grid-column: 1 / -1;
+    }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 13px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+    }
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+    .scale-help {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .scale-box {
+      border: 1px solid var(--border);
+      background: #fbfdfd;
+      border-radius: 14px;
+      padding: 12px;
+      font-size: .9rem;
+    }
+    .scale-box strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 5px;
+    }
+    .criteria-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .criteria-table th, .criteria-table td {
+      padding: 12px;
+      border-bottom: 1px solid #e8f0ee;
+      vertical-align: top;
+      text-align: left;
+    }
+    .criteria-table th {
+      background: #f3fbf8;
+      color: var(--primary-dark);
+      font-size: .92rem;
+      position: sticky;
+      top: 92px;
+      z-index: 2;
+    }
+    .criteria-table tr:last-child td {
+      border-bottom: none;
+    }
+    .criteria-title {
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .criteria-domain {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: .77rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.45;
+    }
+    .level-select {
+      display: grid;
+      gap: 8px;
+      min-width: 210px;
+    }
+    .option {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px 10px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      background: #fff;
+      cursor: pointer;
+    }
+    .option input {
+      width: auto;
+      margin-top: 2px;
+    }
+    .option span {
+      font-size: .88rem;
+      line-height: 1.3;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-weight: 700;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .summary-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fff 0%, #fafdfc 100%);
+    }
+    .summary-card h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--primary-dark);
+    }
+    .bar-wrap {
+      display: grid;
+      gap: 10px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 62px;
+      gap: 10px;
+      align-items: center;
+      font-size: .92rem;
+    }
+    .bar-track {
+      height: 14px;
+      border-radius: 999px;
+      background: #e8f2f0;
+      overflow: hidden;
+      border: 1px solid #d6e6e2;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #14b8a6 0%, #0f766e 100%);
+      width: 0%;
+      transition: width .25s ease;
+    }
+    .records-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: .92rem;
+    }
+    .records-table th, .records-table td {
+      border-bottom: 1px solid #ebf2f0;
+      padding: 10px 8px;
+      text-align: left;
+    }
+    .records-table th {
+      color: var(--primary-dark);
+      background: #f7fbfa;
+    }
+    .tag {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: .8rem;
+      font-weight: 800;
+      background: #eef8f5;
+      color: var(--primary-dark);
+      border: 1px solid #d5eae4;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: .86rem;
+      margin-top: 8px;
+    }
+    .hidden {
+      display: none !important;
+    }
+    @media (max-width: 980px) {
+      .grid-top, .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .field, .field.wide {
+        grid-column: span 6;
+      }
+      .criteria-table th {
+        top: 0;
+        position: static;
+      }
+    }
+    @media (max-width: 720px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+      .brand {
+        align-items: flex-start;
+      }
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .field, .field.wide {
+        grid-column: 1 / -1;
+      }
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+      .criteria-table, .criteria-table thead, .criteria-table tbody, .criteria-table th, .criteria-table td, .criteria-table tr {
+        display: block;
+        width: 100%;
+      }
+      .criteria-table thead {
+        display: none;
+      }
+      .criteria-table tr {
+        border-bottom: 1px solid #e7efed;
+      }
+      .criteria-table td {
+        border-bottom: none;
+        padding: 10px 12px;
+      }
+      .criteria-table td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--primary-dark);
+        font-weight: 800;
+        margin-bottom: 6px;
+        font-size: .84rem;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media print {
+      header, .actions, #recordsSection, #formActions, .footer-note {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+      }
+      .container {
+        max-width: none;
+        padding: 0;
+      }
+      .card {
+        box-shadow: none;
+        border: 1px solid #cfd8d5;
+      }
+      .section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img class="logo" src="data:image/jpeg;base64,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" alt="Logo institucional">
+        <div>
+          <h1>Hemorragia Digestiva · Rúbrica R1</h1>
+          <p>App de evaluación analítica para Urgencias · formativa y sumativa</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="primary" onclick="saveEvaluation()">Guardar evaluación</button>
+        <button onclick="window.print()">Imprimir / PDF</button>
+        <button onclick="exportJSON()">Exportar JSON</button>
+        <button onclick="exportCSV()">Exportar CSV</button>
+        <label class="file-label" for="importFile">Importar JSON</label>
+        <input id="importFile" type="file" accept=".json" class="hidden">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid-top">
+      <div class="card section">
+        <h2>Datos de identificación</h2>
+        <p class="intro">Evalúa únicamente el manejo inicial en Urgencias del R1 ante un paciente con hemorragia digestiva. La app calcula promedios por dominio, nivel global e informe imprimible.</p>
+        <div class="stats">
+          <div class="stat"><span class="label">Promedio global</span><div id="globalAvg" class="value">0.0</div></div>
+          <div class="stat"><span class="label">Nivel global</span><div id="globalLevel" class="value" style="font-size:1.1rem;">Sin evaluar</div></div>
+          <div class="stat"><span class="label">Evaluaciones guardadas</span><div id="savedCount" class="value">0</div></div>
+          <div class="stat"><span class="label">Última fecha</span><div id="lastDate" class="value" style="font-size:1rem;">—</div></div>
+        </div>
+      </div>
+
+      <div class="card section">
+        <h2>Escala Likert</h2>
+        <div class="scale-help">
+          <div class="scale-box"><strong>1 · No competente</strong> Desempeño insuficiente o inseguro.</div>
+          <div class="scale-box"><strong>2 · En desarrollo</strong> Cumplimiento parcial con omisiones relevantes.</div>
+          <div class="scale-box"><strong>3 · Competente</strong> Manejo adecuado para su nivel.</div>
+          <div class="scale-box"><strong>4 · Competencia avanzada</strong> Desempeño sólido, priorizado y seguro.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Ficha del residente y contexto</h2>
+      <div class="form-grid">
+        <div class="field"><label for="residentName">Nombre del residente</label><input id="residentName" placeholder="Nombre completo"></div>
+        <div class="field"><label for="hospital">Hospital</label><input id="hospital" value="Hospital General de Balbuena"></div>
+        <div class="field"><label for="service">Servicio</label><input id="service" value="Urgencias"></div>
+        <div class="field"><label for="evaluator">Evaluador</label><input id="evaluator" placeholder="Nombre del evaluador"></div>
+        <div class="field"><label for="date">Fecha</label><input id="date" type="date"></div>
+        <div class="field"><label for="year">Grado</label><input id="year" value="R1"></div>
+        <div class="field wide"><label for="theme">Temática</label><input id="theme" value="Manejo inicial de la hemorragia digestiva en Urgencias"></div>
+        <div class="field wide"><label for="scenario">Escenario clínico</label><input id="scenario" value="Paciente con hemorragia digestiva en el área de Urgencias"></div>
+        <div class="field full"><label for="purpose">Propósito</label><textarea id="purpose">Evaluar el desempeño del residente de primer año de Urgencias en la valoración inicial, estabilización, manejo inmediato y disposición inicial de un paciente con hemorragia digestiva.</textarea></div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Matriz analítica de evaluación</h2>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th style="width:35%;">Descriptor</th>
+            <th style="width:45%;">Nivel seleccionado</th>
+            <th style="width:20%;">Puntaje</th>
+          </tr>
+        </thead>
+        <tbody id="criteriaBody"></tbody>
+      </table>
+    </section>
+
+    <section class="summary-grid">
+      <div class="card section">
+        <h2>Resumen automático</h2>
+        <div class="summary-card">
+          <h3>Promedios por dominio</h3>
+          <div class="bar-wrap">
+            <div class="bar-row"><div>Cognitiva</div><div class="bar-track"><div id="barCognitiva" class="bar-fill"></div></div><div id="scoreCognitiva">0.0</div></div>
+            <div class="bar-row"><div>Psicomotora</div><div class="bar-track"><div id="barPsicomotora" class="bar-fill"></div></div><div id="scorePsicomotora">0.0</div></div>
+            <div class="bar-row"><div>Afectiva</div><div class="bar-track"><div id="barAfectiva" class="bar-fill"></div></div><div id="scoreAfectiva">0.0</div></div>
+            <div class="bar-row"><div>Global</div><div class="bar-track"><div id="barGlobal" class="bar-fill"></div></div><div id="scoreGlobal">0.0</div></div>
+          </div>
+        </div>
+        <p class="footer-note">Interpretación sugerida: 1.0–1.9 No competente · 2.0–2.5 En desarrollo · 2.6–3.4 Competente · 3.5–4.0 Competencia avanzada.</p>
+      </div>
+
+      <div class="card section">
+        <h2>Retroalimentación</h2>
+        <div class="form-grid">
+          <div class="field full"><label for="strengths">Fortalezas observadas</label><textarea id="strengths" placeholder="Aspectos logrados por el residente"></textarea></div>
+          <div class="field full"><label for="improvement">Áreas de mejora</label><textarea id="improvement" placeholder="Puntos específicos a corregir"></textarea></div>
+          <div class="field full"><label for="plan">Plan de mejora inmediato</label><textarea id="plan" placeholder="Acciones concretas y seguimiento"></textarea></div>
+          <div class="field full"><label for="signature">Firma / nombre del evaluador</label><input id="signature" placeholder="Nombre y firma del evaluador"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recordsSection" class="card section">
+      <h2>Evaluaciones guardadas</h2>
+      <div class="form-grid">
+        <div class="field wide"><label for="searchInput">Buscar por residente o evaluador</label><input id="searchInput" placeholder="Escribe para filtrar"></div>
+        <div class="field"><label>&nbsp;</label><button onclick="clearForm()">Nueva evaluación / limpiar</button></div>
+        <div class="field"><label>&nbsp;</label><button onclick="clearRecords()">Borrar todas las guardadas</button></div>
+      </div>
+      <table class="records-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Residente</th>
+            <th>Evaluador</th>
+            <th>Promedio</th>
+            <th>Nivel</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="recordsBody">
+          <tr><td colspan="6" class="muted">Sin evaluaciones guardadas.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const CRITERIA = [
+      {
+        id: 'c1',
+        domain: 'Cognitiva',
+        title: 'Reconocimiento clínico y priorización',
+        detail: 'Reconoce la hemorragia digestiva como urgencia potencialmente grave y jerarquiza la atención inicial.',
+        levels: {
+          1: 'No identifica oportunamente la gravedad ni prioriza adecuadamente la atención.',
+          2: 'Reconoce el problema, pero jerarquiza de forma incompleta la gravedad o las prioridades.',
+          3: 'Identifica correctamente el cuadro y establece prioridades iniciales adecuadas.',
+          4: 'Reconoce de inmediato la hemorragia digestiva como urgencia potencialmente grave y diferencia con claridad datos de mayor riesgo.'
+        }
+      },
+      {
+        id: 'c2',
+        domain: 'Psicomotora',
+        title: 'Valoración inicial ABCDE',
+        detail: 'Ejecuta la valoración primaria y detecta compromiso hemodinámico y neurológico.',
+        levels: {
+          1: 'No realiza valoración inicial adecuada o compromete la seguridad del paciente.',
+          2: 'La valoración inicial es parcial, desorganizada o con omisiones relevantes.',
+          3: 'Realiza valoración inicial sistemática y adecuada en la mayoría de los componentes.',
+          4: 'Realiza valoración inicial completa, ordenada y segura; identifica estado de choque, perfusión, vía aérea, ventilación y estado neurológico sin omisiones críticas.'
+        }
+      },
+      {
+        id: 'c3',
+        domain: 'Cognitiva',
+        title: 'Interrogatorio urgente dirigido',
+        detail: 'Recoge datos del sangrado, tiempo de evolución, fármacos, comorbilidades y antecedentes relevantes.',
+        levels: {
+          1: 'Omite datos esenciales para la toma de decisiones en Urgencias.',
+          2: 'El interrogatorio recoge solo parte de la información relevante.',
+          3: 'Interroga adecuadamente los elementos principales para el manejo inicial.',
+          4: 'Obtiene información clave de manera rápida y precisa: características del sangrado, fármacos, anticoagulantes/AINE, datos de hipovolemia y antecedentes relevantes.'
+        }
+      },
+      {
+        id: 'c4',
+        domain: 'Psicomotora',
+        title: 'Exploración física dirigida',
+        detail: 'Integra signos vitales, perfusión, abdomen, estado mental y hallazgos clínicos de gravedad.',
+        levels: {
+          1: 'No realiza exploración útil para el manejo inicial.',
+          2: 'La exploración es incompleta o poco enfocada.',
+          3: 'Explora de forma ordenada y adecuada los hallazgos principales.',
+          4: 'Realiza exploración clínica enfocada, útil y segura, con buena correlación clínica.'
+        }
+      },
+      {
+        id: 'c5',
+        domain: 'Cognitiva',
+        title: 'Integración diagnóstica sindromática',
+        detail: 'Formula diagnóstico sindromático inicial y orienta el abordaje urgente.',
+        levels: {
+          1: 'No integra un diagnóstico útil para el contexto urgente.',
+          2: 'El diagnóstico inicial es incompleto o poco jerarquizado.',
+          3: 'Plantea diagnóstico inicial correcto y útil para el manejo.',
+          4: 'Integra con claridad un diagnóstico sindromático inicial, distingue escenarios de mayor riesgo y orienta adecuadamente el abordaje urgente.'
+        }
+      },
+      {
+        id: 'c6',
+        domain: 'Cognitiva',
+        title: 'Solicitud de estudios iniciales',
+        detail: 'Solicita estudios básicos pertinentes y priorizados para la toma de decisiones en Urgencias.',
+        levels: {
+          1: 'Omite estudios esenciales o solicita estudios poco pertinentes.',
+          2: 'Solicita estudios parcialmente pertinentes o sin clara prioridad.',
+          3: 'Solicita estudios básicos adecuados para el cuadro.',
+          4: 'Solicita estudios iniciales pertinentes y priorizados, justificando su utilidad inmediata en Urgencias.'
+        }
+      },
+      {
+        id: 'c7',
+        domain: 'Psicomotora',
+        title: 'Reanimación y medidas inmediatas',
+        detail: 'Indica y ejecuta monitorización, accesos venosos, reanimación inicial, ayuno y manejo farmacológico inicial según el contexto.',
+        levels: {
+          1: 'No inicia adecuadamente las medidas urgentes o pone en riesgo al paciente.',
+          2: 'El manejo inicial es tardío o incompleto.',
+          3: 'Establece la mayoría de las medidas iniciales correctas.',
+          4: 'Indica y ejecuta oportunamente monitorización, accesos venosos, reanimación inicial, vigilancia y medidas farmacológicas según el contexto clínico.'
+        }
+      },
+      {
+        id: 'c8',
+        domain: 'Psicomotora',
+        title: 'Interconsulta y solicitud de apoyo',
+        detail: 'Pide apoyo especializado y comunica el caso de manera clara y oportuna.',
+        levels: {
+          1: 'No solicita apoyo oportunamente o retrasa la atención especializada.',
+          2: 'Reconoce la necesidad de apoyo, pero lo solicita tarde o con información incompleta.',
+          3: 'Solicita apoyo en tiempo razonable y con información suficiente.',
+          4: 'Solicita apoyo e interconsulta de manera oportuna, con comunicación clara, pertinente y jerarquizada.'
+        }
+      },
+      {
+        id: 'c9',
+        domain: 'Afectiva',
+        title: 'Comunicación con paciente, familiar y equipo',
+        detail: 'Explica riesgos, conducta inicial y prioridades con claridad y empatía.',
+        levels: {
+          1: 'La comunicación es confusa, poco profesional o ineficaz.',
+          2: 'La comunicación es aceptable pero incompleta, poco clara o poco empática.',
+          3: 'Mantiene comunicación clara y profesional.',
+          4: 'Comunica con claridad, serenidad y empatía; explica riesgos y conducta inicial con lenguaje adecuado.'
+        }
+      },
+      {
+        id: 'c10',
+        domain: 'Afectiva',
+        title: 'Profesionalismo y seguridad del paciente',
+        detail: 'Se conduce con responsabilidad, reconoce límites y solicita supervisión cuando corresponde.',
+        levels: {
+          1: 'Presenta conductas que comprometen el profesionalismo o la seguridad del paciente.',
+          2: 'Presenta fallas menores en organización, actitud o seguridad clínica.',
+          3: 'Actúa con profesionalismo y seguridad clínica adecuada.',
+          4: 'Se conduce con alto sentido de responsabilidad, reconoce límites de competencia y prioriza siempre la seguridad del paciente.'
+        }
+      },
+      {
+        id: 'c11',
+        domain: 'Cognitiva',
+        title: 'Disposición inicial del paciente',
+        detail: 'Define vigilancia, destino inicial y necesidad de observación o manejo prioritario según gravedad.',
+        levels: {
+          1: 'No define apropiadamente la disposición inicial del paciente.',
+          2: 'La disposición es parcialmente correcta, con dudas o retrasos.',
+          3: 'Toma decisiones iniciales adecuadas sobre disposición y vigilancia.',
+          4: 'Define correctamente vigilancia, destino inicial y necesidad de observación o manejo prioritario según gravedad y respuesta clínica.'
+        }
+      }
+    ];
+
+    const STORAGE_KEY = 'rubricaHemorragiaDigestivaR1';
+    const formIds = ['residentName','hospital','service','evaluator','date','year','theme','scenario','purpose','strengths','improvement','plan','signature'];
+
+    function renderCriteria() {
+      const tbody = document.getElementById('criteriaBody');
+      tbody.innerHTML = '';
+      CRITERIA.forEach((c, idx) => {
+        const tr = document.createElement('tr');
+        const current = getSelected(c.id);
+        tr.innerHTML = `
+          <td data-label="Descriptor">
+            <div class="criteria-domain">${c.domain}</div>
+            <div class="criteria-title">${idx + 1}. ${c.title}</div>
+            <div class="desc">${c.detail}</div>
+          </td>
+          <td data-label="Nivel seleccionado">
+            <div class="level-select">
+              ${[4,3,2,1].map(level => `
+                <label class="option">
+                  <input type="radio" name="${c.id}" value="${level}" ${current == level ? 'checked' : ''} onchange="updateSummary()">
+                  <span><strong>${level}.</strong> ${labelLevel(level)}<br>${c.levels[level]}</span>
+                </label>`).join('')}
+            </div>
+          </td>
+          <td data-label="Puntaje">
+            <span class="pill" id="score_${c.id}">${current ? current : '—'}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateSummary();
+    }
+
+    function labelLevel(level) {
+      return ({1:'No competente',2:'En desarrollo',3:'Competente',4:'Competencia avanzada'})[level];
+    }
+
+    function getSelected(id) {
+      const checked = document.querySelector(`input[name="${id}"]:checked`);
+      return checked ? Number(checked.value) : 0;
+    }
+
+    function getDomainScores() {
+      const groups = { Cognitiva: [], Psicomotora: [], Afectiva: [] };
+      CRITERIA.forEach(c => groups[c.domain].push(getSelected(c.id)));
+      const avg = arr => {
+        const vals = arr.filter(v => v > 0);
+        if (!vals.length) return 0;
+        return vals.reduce((a,b)=>a+b,0) / vals.length;
+      };
+      return {
+        Cognitiva: avg(groups.Cognitiva),
+        Psicomotora: avg(groups.Psicomotora),
+        Afectiva: avg(groups.Afectiva)
+      };
+    }
+
+    function getGlobalAverage() {
+      const vals = CRITERIA.map(c => getSelected(c.id)).filter(v => v > 0);
+      if (!vals.length) return 0;
+      return vals.reduce((a,b)=>a+b,0) / vals.length;
+    }
+
+    function interpret(avg) {
+      if (!avg) return 'Sin evaluar';
+      if (avg < 2.0) return 'No competente';
+      if (avg < 2.6) return 'En desarrollo';
+      if (avg < 3.5) return 'Competente';
+      return 'Competencia avanzada';
+    }
+
+    function updateSummary() {
+      CRITERIA.forEach(c => {
+        const el = document.getElementById(`score_${c.id}`);
+        if (el) el.textContent = getSelected(c.id) || '—';
+      });
+      const domains = getDomainScores();
+      const global = getGlobalAverage();
+
+      ['Cognitiva','Psicomotora','Afectiva'].forEach(name => {
+        document.getElementById('score' + name).textContent = domains[name].toFixed(1);
+        document.getElementById('bar' + name).style.width = (domains[name] / 4 * 100) + '%';
+      });
+
+      document.getElementById('scoreGlobal').textContent = global.toFixed(1);
+      document.getElementById('barGlobal').style.width = (global / 4 * 100) + '%';
+      document.getElementById('globalAvg').textContent = global.toFixed(1);
+      document.getElementById('globalLevel').textContent = interpret(global);
+    }
+
+    function collectData() {
+      const form = {};
+      formIds.forEach(id => form[id] = document.getElementById(id).value.trim());
+      form.criteria = CRITERIA.map(c => ({
+        id: c.id,
+        domain: c.domain,
+        title: c.title,
+        score: getSelected(c.id),
+        interpretation: getSelected(c.id) ? labelLevel(getSelected(c.id)) : ''
+      }));
+      form.domainScores = getDomainScores();
+      form.globalAverage = Number(getGlobalAverage().toFixed(2));
+      form.globalLevel = interpret(form.globalAverage);
+      form.savedAt = new Date().toISOString();
+      return form;
+    }
+
+    function saveEvaluation() {
+      const data = collectData();
+      if (!data.residentName) {
+        alert('Escribe el nombre del residente.');
+        return;
+      }
+      if (!data.date) {
+        alert('Selecciona la fecha.');
+        return;
+      }
+      const records = loadRecords();
+      records.unshift(data);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      refreshRecords();
+      alert('Evaluación guardada correctamente.');
+    }
+
+    function loadRecords() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function refreshRecords() {
+      const records = loadRecords();
+      document.getElementById('savedCount').textContent = records.length;
+      document.getElementById('lastDate').textContent = records[0]?.date || '—';
+      const q = document.getElementById('searchInput')?.value?.toLowerCase() || '';
+      const filtered = records.filter(r =>
+        (r.residentName || '').toLowerCase().includes(q) ||
+        (r.evaluator || '').toLowerCase().includes(q)
+      );
+      const body = document.getElementById('recordsBody');
+      if (!filtered.length) {
+        body.innerHTML = '<tr><td colspan="6" class="muted">Sin evaluaciones guardadas.</td></tr>';
+        return;
+      }
+      body.innerHTML = filtered.map((r, i) => `
+        <tr>
+          <td>${r.date || '—'}</td>
+          <td>${escapeHtml(r.residentName || '—')}</td>
+          <td>${escapeHtml(r.evaluator || '—')}</td>
+          <td>${Number(r.globalAverage || 0).toFixed(1)}</td>
+          <td><span class="tag">${r.globalLevel || '—'}</span></td>
+          <td>
+            <button onclick="loadRecord(${records.indexOf(r)})">Abrir</button>
+            <button onclick="deleteRecord(${records.indexOf(r)})">Eliminar</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function loadRecord(index) {
+      const records = loadRecords();
+      const r = records[index];
+      if (!r) return;
+      formIds.forEach(id => document.getElementById(id).value = r[id] || '');
+      CRITERIA.forEach(c => {
+        const score = r.criteria?.find(x => x.id === c.id)?.score || 0;
+        document.querySelectorAll(`input[name="${c.id}"]`).forEach(inp => {
+          inp.checked = Number(inp.value) === Number(score);
+        });
+      });
+      updateSummary();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function deleteRecord(index) {
+      const records = loadRecords();
+      if (!records[index]) return;
+      if (!confirm('¿Eliminar esta evaluación guardada?')) return;
+      records.splice(index, 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      refreshRecords();
+    }
+
+    function clearForm() {
+      if (!confirm('¿Limpiar el formulario actual?')) return;
+      formIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (id === 'hospital') el.value = 'Hospital General de Balbuena';
+        else if (id === 'service') el.value = 'Urgencias';
+        else if (id === 'year') el.value = 'R1';
+        else if (id === 'theme') el.value = 'Manejo inicial de la hemorragia digestiva en Urgencias';
+        else if (id === 'scenario') el.value = 'Paciente con hemorragia digestiva en el área de Urgencias';
+        else if (id === 'purpose') el.value = 'Evaluar el desempeño del residente de primer año de Urgencias en la valoración inicial, estabilización, manejo inmediato y disposición inicial de un paciente con hemorragia digestiva.';
+        else el.value = '';
+      });
+      CRITERIA.forEach(c => document.querySelectorAll(`input[name="${c.id}"]`).forEach(inp => inp.checked = false));
+      updateSummary();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function clearRecords() {
+      if (!confirm('¿Borrar todas las evaluaciones guardadas en este dispositivo?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      refreshRecords();
+    }
+
+    function exportJSON() {
+      const records = loadRecords();
+      const blob = new Blob([JSON.stringify(records, null, 2)], {type: 'application/json'});
+      downloadBlob(blob, 'Rubrica_Hemorragia_Digestiva_R1.json');
+    }
+
+    function exportCSV() {
+      const records = loadRecords();
+      if (!records.length) {
+        alert('No hay evaluaciones guardadas para exportar.');
+        return;
+      }
+      const headers = ['Fecha','Residente','Evaluador','Hospital','Servicio','PromedioGlobal','NivelGlobal','Cognitiva','Psicomotora','Afectiva','Fortalezas','AreasMejora','PlanMejora'];
+      const rows = records.map(r => [
+        r.date || '',
+        csvSafe(r.residentName),
+        csvSafe(r.evaluator),
+        csvSafe(r.hospital),
+        csvSafe(r.service),
+        r.globalAverage ?? '',
+        csvSafe(r.globalLevel),
+        r.domainScores?.Cognitiva?.toFixed ? r.domainScores.Cognitiva.toFixed(2) : '',
+        r.domainScores?.Psicomotora?.toFixed ? r.domainScores.Psicomotora.toFixed(2) : '',
+        r.domainScores?.Afectiva?.toFixed ? r.domainScores.Afectiva.toFixed(2) : '',
+        csvSafe(r.strengths),
+        csvSafe(r.improvement),
+        csvSafe(r.plan)
+      ]);
+      const csv = [headers.join(','), ...rows.map(r => r.map(v => `"${String(v ?? '').replace(/"/g,'""')}"`).join(','))].join('\n');
+      const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+      downloadBlob(blob, 'Rubrica_Hemorragia_Digestiva_R1.csv');
+    }
+
+    function csvSafe(v) {
+      return String(v ?? '');
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById('importFile').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(reader.result);
+          if (!Array.isArray(imported)) throw new Error('Formato no válido');
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(imported));
+          refreshRecords();
+          alert('Respaldo importado correctamente.');
+        } catch {
+          alert('No se pudo importar el archivo JSON.');
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = '';
+    });
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+    }
+
+    document.getElementById('searchInput').addEventListener('input', refreshRecords);
+
+    if (!document.getElementById('date').value) {
+      document.getElementById('date').value = new Date().toISOString().slice(0,10);
+    }
+
+    renderCriteria();
+    refreshRecords();
+  </script>
+</body>
+</html>
